@@ -1,3 +1,5 @@
+# SGD-Classifier
+### Date:
 ## AIM:
 To write a program to predict the type of species of the Iris flower using the SGD Classifier.
 
@@ -6,36 +8,25 @@ To write a program to predict the type of species of the Iris flower using the S
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-step 1. start
+Step 1: Start the Program.
 
-step 2. Import Necessary Libraries and Load Data
+Step 2: Import Necessary Libraries and Load Data
 
-step 3. Split Dataset into Training and Testing Sets
+Step 3: Split Dataset into Training and Testing Sets
 
-step 4. Train the Model Using Stochastic Gradient Descent (SGD)
+Step 4: Train the Model Using Stochastic Gradient Descent (SGD)
 
-step 5. Make Predictions and Evaluate Accuracy
+Step 5: Make Predictions and Evaluate Accuracy
 
-step 6. Generate Confusion Matrix
+Step 6: Generate Confusion Matrix
 
-step 7. end
-
+Step 7: Stop the program.
 ## Program:
+```
 /*
 Program to implement the prediction of iris species using SGD Classifier.
-
-
 Developed by: R suraj pandian
-
-
 RegisterNumber:  212223080040
-*/
-
-
-```python
-
-
-
 
 import pandas as pd
 from sklearn.datasets import load_iris
@@ -45,46 +36,46 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Load the Iris dataset
+#load the dataset
 iris = load_iris()
 
-# Create a Pandas DataFrame
-df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
-df['target'] = iris.target
+#create pandas dataframe
+df=pd.DataFrame(data=iris.data, columns=iris.feature_names)
+df['target']=iris.target
 
-# Display the first few rows of the dataset
 print(df.head())
 
-# Split the data into features (X) and target (y)
-X = df.drop('target', axis=1)
-y = df['target']
+#split the data into features x and target y
+x=df.drop('target',axis=1)
+y= df['target']
 
-# Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+#split the data into training and testing set
+x_train, x_test,y_train,y_test = train_test_split(x,y, test_size = 0.2, random_state = 42)
 
-# Create an SGD classifier with default parameters
-sgd_clf = SGDClassifier(max_iter=1000, tol=1e-3)
+sgd_clf = SGDClassifier(max_iter = 1000, tol= 1e-3)#create sgd classifier with default parameter
+sgd_clf.fit(x_train, y_train)#train the classifier on the training data
 
-# Train the classifier on the training data
-sgd_clf.fit(X_train, y_train)
+y_pred = sgd_clf.predict(x_test)#make predictions on the testing data
 
-# Make predictions on the testing data
-y_pred = sgd_clf.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)# evaluate the classifier's accuracy
+print(f"Accuracy:{accuracy:.3f}")
 
-# Evaluate the classifier's accuracy
-accuracy = accuracy_score(y_test, y_pred)
-print(f"Accuracy: {accuracy:.3f}")
-
-# Calculate the confusion matrix
-cm = confusion_matrix(y_test, y_pred)
-print("Confusion Matrix:")
-print(cm)
-
+#calculate the confusion matrix
+cf=confusion_matrix(y_test, y_pred)
+print("Confusion Matrix")
+print(cf)
+*/
 ```
 
 ## Output:
-![alt text](369634357-43164337-4cfd-4c2c-971c-01175e8f88dd.png)
+### Data:
+![71](https://github.com/user-attachments/assets/eb4171f5-9f03-48a7-b788-b5454cb1c0ac)
 
+### Accuracy:
+![72](https://github.com/user-attachments/assets/2239e11c-61e7-48b8-b786-8b02a95ac1d9)
+
+### Matrix:
+![73](https://github.com/user-attachments/assets/ac5fc365-639d-4d1b-9f16-dd2fd31f4f83)
 
 
 ## Result:
